@@ -4,28 +4,26 @@ class Logger {
         showStackTrace: true,
     };
 
+    static #getCaller() {
+        const stack = new Error().stack?.split("\n");
+        return stack?.[4]?.trim() || "unknown";
+    }
+
     static #format(label, color, bg) {
         const styles = [`color: ${color}; background: ${bg};`];
         let format = `%c${label}`;
 
         if (this.config.showTimestamp) {
-            const timestamp = new Date().toLocaleString();
-            format += `%c ${timestamp}`;
+            format += `%c ${new Date().toLocaleString()}`;
             styles.push("color: gray;");
         }
 
         if (this.config.showStackTrace) {
-            const origin = this.#getCaller();
-            format += `%c ${origin}`;
+            format += `%c ${this.#getCaller()}`;
             styles.push("color: orange; font-style: italic;");
         }
 
         return [format, ...styles];
-    }
-
-    static #getCaller() {
-        const stack = new Error().stack?.split("\n");
-        return stack?.[4]?.trim() || "unknown";
     }
 
     static log(...msg) {

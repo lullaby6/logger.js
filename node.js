@@ -21,20 +21,24 @@ class Logger {
         stack: { node: '\x1b[33m\x1b[3m', browser: 'color: orange; font-style: italic;' },
     };
 
+    static #getCaller() {
+        const stack = new Error().stack?.split("\n");
+
+        return stack?.[4]?.trim() || "unknown";
+    }
+
     static #formatBrowser(type) {
         const label = `[${type.toUpperCase()}]`
         const styles = [this.#styles[type].browser];
         let format = `%c${label}`;
 
         if (this.config.showTimestamp) {
-            const timestamp = new Date().toLocaleString();
-            format += `%c ${timestamp}`;
+            format += `%c ${new Date().toLocaleString()}`;
             styles.push(this.#styles.timestamp.browser);
         }
 
         if (this.config.showStackTrace) {
-            const origin = this.#getCaller();
-            format += `%c ${origin}`;
+            format += `%c ${this.#getCaller()}`;
             styles.push(this.#styles.stack.browser);
         }
 
@@ -42,23 +46,14 @@ class Logger {
     }
 
     static #formatNode(type, msg) {
-        const label = `[${type.toUpperCase()}]`
+        const label = `[${type.toUpperCase()}]`;
+        let format = `${this.#styles[type].node}${label}${this.#resetStyle}`;
 
-        const timestamp = this.config.showTimestamp ? new Date().toLocaleString() : '';
-        const stack = this.config.showStackTrace ? this.#getCaller() : '';
+        if (this.config.showTimestamp) format += `${this.#styles.timestamp.node} ${new Date().toLocaleString()}${this.#resetStyle}`;
 
-        const parts = [
-            `${this.#styles[type].node}${label}${this.#resetStyle}`,
-            timestamp ? `${this.#styles.timestamp.node}${timestamp}${this.#resetStyle}` : '',
-            stack ? `${this.#styles.stack.node}${stack}${this.#resetStyle}` : '',
-        ];
+        if (this.config.showStackTrace) format += `${this.#styles.stack.node} ${this.#getCaller()}${this.#resetStyle}`;
 
-        return `${parts.filter(Boolean).join(' ')} ${msg.join(' ')} \n`;
-    }
-
-    static #getCaller() {
-        const stack = new Error().stack?.split("\n");
-        return stack?.[4]?.trim() || "unknown";
+        return `${format} ${msg.join(' ')}\n`;
     }
 
     static #flush() {
