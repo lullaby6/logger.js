@@ -7,20 +7,17 @@ class Logger {
     static #format(label, color, bg) {
         const styles = [`color: ${color}; background: ${bg};`];
         let format = `%c${label}`;
-        let count = 1;
 
         if (this.config.showTimestamp) {
             const timestamp = new Date().toLocaleString();
             format += `%c ${timestamp}`;
             styles.push("color: gray;");
-            count++;
         }
 
         if (this.config.showStackTrace) {
             const origin = this.#getCaller();
             format += `%c ${origin}`;
             styles.push("color: orange; font-style: italic;");
-            count++;
         }
 
         return [format, ...styles];
