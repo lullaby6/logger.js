@@ -44,6 +44,7 @@ import Logger from "@lullaby6/logger";
 
 ```js
 // Logs
+Logger.log("Log");
 Logger.info("Info");
 Logger.warn("Warning");
 Logger.error("Error");
