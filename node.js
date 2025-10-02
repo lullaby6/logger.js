@@ -75,6 +75,7 @@ class Logger {
 
     static #enqueueLog(type, msg) {
         this.#buffer.push({ type, msg });
+
         if (!this.#flushing) this.#flush();
     }
 

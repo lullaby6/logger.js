@@ -6,6 +6,7 @@ class Logger {
 
     static #getStackTrace() {
         const stack = new Error().stack?.split("\n");
+
         return stack?.[4]?.trim() || "unknown";
     }
 
