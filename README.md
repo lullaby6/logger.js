@@ -21,12 +21,10 @@ import Logger from "@lullaby6/logger";
 ### CDN
 
 ```html
+<!-- UMD/Global -->
 <script src="https://cdn.jsdelivr.net/gh/lullaby6/logger.js/logger.min.umd.js"></script>
-```
 
-You can aslo import the Module format:
-
-```html
+<!-- Module -->
 <script type="module">
 	import Logger from "https://cdn.jsdelivr.net/gh/lullaby6/logger.js/logger.min.mjs.js";
 </script>
@@ -34,7 +32,7 @@ You can aslo import the Module format:
 
 ### Download
 
-<a href="https://cdn.jsdelivr.net/gh/lullaby6/logger.js/logger.min.umd.js" target="_blank">Download</a> and include the downloaded file in your project:
+<a href="https://cdn.jsdelivr.net/gh/lullaby6/logger.js/logger.min.umd.js" target="_blank">Click to download</a>
 
 ```html
 <script src="/path/to/logger.min.umd.js"></script>
@@ -51,7 +49,7 @@ Logger.success("Success");
 Logger.debug("Debug");
 Logger.trace("Trace");
 
-// Disable show timestamp
+// Disable timestamp
 Logger.config.showTimestamp = false;
 
 // Disable stack trace
