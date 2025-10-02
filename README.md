@@ -1,6 +1,6 @@
 # Logger
 
-Minimal logger with colors, timestamps, and source info.
+Minimal logger with colors, timestamp, and stack trace.
 
 ![ss](https://raw.githubusercontent.com/lullaby6/logger.js/refs/heads/main/ss.png)
 

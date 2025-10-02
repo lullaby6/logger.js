@@ -1,7 +1,7 @@
 {
 	"name": "logger",
 	"version": "1.0.0",
-	"description": "Minimal logger with colors, timestamps, and source info.",
+	"description": "Minimal logger with colors, timestamp, and stack trace.",
 	"main": "logger.min.cjs.js",
 	"module": "logger.min.mjs.js",
 	"scripts": {
