@@ -10,17 +10,17 @@ class Logger {
         let count = 1;
 
         if (this.config.showTimestamp) {
-        const timestamp = new Date().toLocaleString();
-        format += `%c ${timestamp}`;
-        styles.push("color: gray;");
-        count++;
+            const timestamp = new Date().toLocaleString();
+            format += `%c ${timestamp}`;
+            styles.push("color: gray;");
+            count++;
         }
 
         if (this.config.showStackTrace) {
-        const origin = this.#getCaller();
-        format += `%c ${origin}`;
-        styles.push("color: orange; font-style: italic;");
-        count++;
+            const origin = this.#getCaller();
+            format += `%c ${origin}`;
+            styles.push("color: orange; font-style: italic;");
+            count++;
         }
 
         return [format, ...styles];
