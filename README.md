@@ -2,6 +2,8 @@
 
 Minimal logger with colors, timestamps, and source info.
 
+![ss](https://raw.githubusercontent.com/lullaby6/logger.js/refs/heads/main/ss.png)
+
 ## Installation
 
 ### NPM
