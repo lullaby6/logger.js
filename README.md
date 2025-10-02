@@ -61,4 +61,4 @@ Logger.config.showStackTrace = false;
 
 ## License
 
-MIT
+[MIT](https://github.com/lullaby6/logger.js/blob/main/LICENSE)
