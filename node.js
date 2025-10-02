@@ -10,6 +10,7 @@ class Logger {
     static #resetStyle = '\x1b[0m'
 
     static #styles = {
+        log: { node: '\x1b[90m', browser: 'color: black; background: white;' },
         error: { node: '\x1b[37;41m', browser: 'color: white; background: red;' },
         warn: { node: '\x1b[30;43m', browser: 'color: black; background: yellow;' },
         info: { node: '\x1b[37;44m', browser: 'color: white; background: blue;' },
@@ -22,13 +23,7 @@ class Logger {
 
     static #formatBrowser(type) {
         const label = `[${type.toUpperCase()}]`
-
-        const styles = [];
-
-        if (type in this.#styles) {
-            styles.push(this.#styles[type].browser)
-        }
-
+        const styles = [this.#styles[type].browser];
         let format = `%c${label}`;
 
         if (this.config.showTimestamp) {

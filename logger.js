@@ -28,6 +28,10 @@ class Logger {
         return stack?.[4]?.trim() || "unknown";
     }
 
+    static log(...msg) {
+        console.log(...this.#format('[LOG]', 'black', 'white'), ...msg);
+    }
+
     static error(...msg) {
         console.log(...this.#format('[ERROR]', 'white', 'red'), ...msg);
     }
