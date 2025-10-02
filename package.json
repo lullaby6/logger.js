@@ -1,0 +1,23 @@
+{
+	"name": "logger",
+	"version": "1.0.0",
+	"description": "Minimal logger with colors, timestamps, and source info.",
+	"main": "logger.min.cjs.js",
+	"module": "logger.min.mjs.js",
+	"scripts": {
+		"publish": "npm publish --access=public"
+	},
+	"keywords": [
+		"log",
+		"logger",
+		"debug"
+	],
+	"author": "github.com/lullaby6",
+	"license": "MIT",
+	"type": "commonjs",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lullaby6/logger.js.git"
+	},
+	"homepage": "https://github.com/lullaby6/logger.js"
+}
