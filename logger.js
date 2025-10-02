@@ -4,7 +4,7 @@ class Logger {
         showStackTrace: true,
     };
 
-    static #getCaller() {
+    static #getStackTrace() {
         const stack = new Error().stack?.split("\n");
         return stack?.[4]?.trim() || "unknown";
     }
@@ -19,7 +19,7 @@ class Logger {
         }
 
         if (this.config.showStackTrace) {
-            format += `%c ${this.#getCaller()}`;
+            format += `%c ${this.#getStackTrace()}`;
             styles.push("color: orange; font-style: italic;");
         }
 

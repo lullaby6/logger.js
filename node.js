@@ -21,7 +21,7 @@ class Logger {
         stack: { node: '\x1b[33m\x1b[3m', browser: 'color: orange; font-style: italic;' },
     };
 
-    static #getCaller() {
+    static #getStackTrace() {
         const stack = new Error().stack?.split("\n");
 
         return stack?.[4]?.trim() || "unknown";
@@ -38,7 +38,7 @@ class Logger {
         }
 
         if (this.config.showStackTrace) {
-            format += `%c ${this.#getCaller()}`;
+            format += `%c ${this.#getStackTrace()}`;
             styles.push(this.#styles.stack.browser);
         }
 
@@ -51,7 +51,7 @@ class Logger {
 
         if (this.config.showTimestamp) format += `${this.#styles.timestamp.node} ${new Date().toLocaleString()}${this.#resetStyle}`;
 
-        if (this.config.showStackTrace) format += `${this.#styles.stack.node} ${this.#getCaller()}${this.#resetStyle}`;
+        if (this.config.showStackTrace) format += `${this.#styles.stack.node} ${this.#getStackTrace()}${this.#resetStyle}`;
 
         return `${format} ${msg.join(' ')}\n`;
     }
