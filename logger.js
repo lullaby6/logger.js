@@ -1,7 +1,7 @@
 class Logger {
     static config = {
         showTimestamp: true,
-        showSource: true,
+        showStackTrace: true,
     };
 
     static #format(label, color, bg) {
@@ -16,7 +16,7 @@ class Logger {
         count++;
         }
 
-        if (this.config.showSource) {
+        if (this.config.showStackTrace) {
         const origin = this.#getCaller();
         format += `%c ${origin}`;
         styles.push("color: orange; font-style: italic;");

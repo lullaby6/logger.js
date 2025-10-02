@@ -55,7 +55,7 @@ Logger.trace("Trace");
 Logger.config.showTimestamp = false;
 
 // Disable stack trace
-Logger.config.showSource = false;
+Logger.config.showStackTrace = false;
 ```
 
 ## License
