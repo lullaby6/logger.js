@@ -1,5 +1,5 @@
 {
-	"name": "logger",
+	"name": "@lullaby6/logger",
 	"version": "1.0.0",
 	"description": "Minimal logger with colors, timestamp, and stack trace.",
 	"main": "logger.min.cjs.js",
